@@ -1,0 +1,60 @@
+ANOVA results for xL1 Leaf angle absolute (°):
+F-value: 2.373382123934018, P-value: 0.16198633872667126
+Levene's Test for Equal Variances p-value: 0.3931932052439536
+Normality test p-values by density:
+High: 0.3232370913028717
+Low: 0.8231440782546997
+ANOVA results for xL2 Radius (mm):
+F-value: 0.0017885248247245388, P-value: 0.9673032231141212
+Levene's Test for Equal Variances p-value: 0.7596288202073165
+Normality test p-values by density:
+High: 0.28982946276664734
+Low: 0.02566888928413391
+ANOVA results for xL3 Radius (mm):
+F-value: 3.3257528717789513, P-value: 0.10565752421104686
+Levene's Test for Equal Variances p-value: 0.7507790264563902
+Normality test p-values by density:
+High: 0.16427183151245117
+Low: 0.04487753286957741
+ANOVA results for xL4 Radius (mm):
+F-value: 2.6050514499532293, P-value: 0.1451876637282479
+Levene's Test for Equal Variances p-value: 0.320911233185354
+Normality test p-values by density:
+High: 0.653172492980957
+Low: 0.7085012793540955
+ANOVA results for xL5 Radius (mm):
+F-value: 0.48430840759395566, P-value: 0.5061879140082148
+Levene's Test for Equal Variances p-value: 0.9059731734223763
+Normality test p-values by density:
+High: 0.9921599626541138
+Low: 0.941356360912323
+ANOVA results for xL6 Radius (mm):
+F-value: 0.9740888982515278, P-value: 0.3525685189865726
+Levene's Test for Equal Variances p-value: 0.30838083312328135
+Normality test p-values by density:
+High: 0.014138474129140377
+Low: 0.628264307975769
+ANOVA results for xL7 Radius (mm):
+F-value: 0.27374407582938426, P-value: 0.615009623662525
+Levene's Test for Equal Variances p-value: 0.43559095059334874
+Normality test p-values by density:
+High: 0.18170799314975739
+Low: 0.6620980501174927
+ANOVA results for xL8 Radius (mm):
+F-value: 0.0, P-value: 1.0
+Levene's Test for Equal Variances p-value: 0.15379748770368223
+Normality test p-values by density:
+High: 0.6583417654037476
+Low: 0.5315518379211426
+ANOVA results for xL9 Radius (mm):
+F-value: 0.7068058455114827, P-value: 0.42491935701711064
+Levene's Test for Equal Variances p-value: 0.5843130969713365
+Normality test p-values by density:
+High: 0.7996837496757507
+Low: 0.1648409068584442
+ANOVA results for xL10 Radius (mm):
+F-value: 0.0826408651109847, P-value: 0.7834205641339891
+Levene's Test for Equal Variances p-value: 0.10547115478035918
+Normality test p-values by density:
+High: 0.5944439172744751
+Low: 0.530162513256073

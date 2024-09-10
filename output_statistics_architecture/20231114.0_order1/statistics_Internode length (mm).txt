@@ -1,0 +1,60 @@
+ANOVA results for I0 Internode length (mm):
+F-value: 3.340661175422978, P-value: 0.1049988222966066
+Levene's Test for Equal Variances p-value: 0.20093889286138525
+Normality test p-values by density:
+High: 0.7311773896217346
+Low: 0.01618209108710289
+ANOVA results for I1 Radius (mm):
+F-value: 0.7598976654940839, P-value: 0.4087587101183925
+Levene's Test for Equal Variances p-value: 0.34621515952791515
+Normality test p-values by density:
+High: 0.55495285987854
+Low: 0.19167102873325348
+ANOVA results for I2 Radius (mm):
+F-value: 2.075243554803747, P-value: 0.18767186020478566
+Levene's Test for Equal Variances p-value: 0.3603327036290865
+Normality test p-values by density:
+High: 0.2520175576210022
+Low: 0.7732383608818054
+ANOVA results for I3 Radius (mm):
+F-value: 3.097701149425288, P-value: 0.11644170482080347
+Levene's Test for Equal Variances p-value: 0.5622268741821581
+Normality test p-values by density:
+High: 0.14811010658740997
+Low: 0.6798571944236755
+ANOVA results for I4 Radius (mm):
+F-value: 1.60867966164031, P-value: 0.24033976558605366
+Levene's Test for Equal Variances p-value: 0.4099915078294821
+Normality test p-values by density:
+High: 0.26213744282722473
+Low: 0.5481956601142883
+ANOVA results for I5 Radius (mm):
+F-value: 1.6870639824596398, P-value: 0.23017270553634314
+Levene's Test for Equal Variances p-value: 0.43049289023058807
+Normality test p-values by density:
+High: 0.6796630024909973
+Low: 0.6405813694000244
+ANOVA results for I6 Radius (mm):
+F-value: 1.6700615105374625, P-value: 0.23232636284377506
+Levene's Test for Equal Variances p-value: 0.39883042070891667
+Normality test p-values by density:
+High: 0.7552989721298218
+Low: 0.6405813694000244
+ANOVA results for I7 Radius (mm):
+F-value: 0.8531906300484661, P-value: 0.382665954108224
+Levene's Test for Equal Variances p-value: 0.6766392709182207
+Normality test p-values by density:
+High: 0.4338212311267853
+Low: 0.32070064544677734
+ANOVA results for I8 Radius (mm):
+F-value: 0.4208737864077673, P-value: 0.53467677453152
+Levene's Test for Equal Variances p-value: 0.8838799446102974
+Normality test p-values by density:
+High: 0.8966698050498962
+Low: 0.5769618153572083
+ANOVA results for I9 Radius (mm):
+F-value: 0.46016190881977026, P-value: 0.5228354371857071
+Levene's Test for Equal Variances p-value: 0.1204770078004268
+Normality test p-values by density:
+High: 0.7999395728111267
+Low: 0.9523187875747681

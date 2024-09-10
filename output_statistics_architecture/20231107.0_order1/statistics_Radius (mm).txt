@@ -1,0 +1,54 @@
+ANOVA results for I0 Radius (mm):
+F-value: 0.261774579703071, P-value: 0.6200109296500833
+Levene's Test for Equal Variances p-value: 0.5121474400147652
+Normality test p-values by density:
+High: 0.059579066932201385
+Low: 0.05391263589262962
+ANOVA results for I1 Radius (mm):
+F-value: 0.8505602741891206, P-value: 0.3781080439233796
+Levene's Test for Equal Variances p-value: 0.590519093849954
+Normality test p-values by density:
+High: 0.004569294862449169
+Low: 0.2596607208251953
+ANOVA results for I2 Radius (mm):
+F-value: 2.81654207377533, P-value: 0.12422442216863136
+Levene's Test for Equal Variances p-value: 0.37055586268356805
+Normality test p-values by density:
+High: 0.002869626274332404
+Low: 0.3565659821033478
+ANOVA results for I3 Radius (mm):
+F-value: 3.6068516405532516, P-value: 0.0867409123196956
+Levene's Test for Equal Variances p-value: 0.8297140078686793
+Normality test p-values by density:
+High: 0.0041919006034731865
+Low: 0.21094663441181183
+ANOVA results for I4 Radius (mm):
+F-value: 4.9696913177282465, P-value: 0.04990331732425382
+Levene's Test for Equal Variances p-value: 0.4421472082945199
+Normality test p-values by density:
+High: 0.35810938477516174
+Low: 0.35531410574913025
+ANOVA results for I5 Radius (mm):
+F-value: 2.7470517752412205, P-value: 0.1284279859307184
+Levene's Test for Equal Variances p-value: 0.7094639346840061
+Normality test p-values by density:
+High: 0.8942049741744995
+Low: 0.08513831347227097
+ANOVA results for I6 Radius (mm):
+F-value: 0.8739829003345593, P-value: 0.37188017626163805
+Levene's Test for Equal Variances p-value: 0.8800717395050729
+Normality test p-values by density:
+High: 0.3991275429725647
+Low: 0.5633436441421509
+ANOVA results for I7 Radius (mm):
+F-value: 0.0066883556553763955, P-value: 0.9364335292088322
+Levene's Test for Equal Variances p-value: 0.0722860059891691
+Normality test p-values by density:
+High: 0.6832019090652466
+Low: 0.8429710865020752
+ANOVA results for I8 Radius (mm):
+F-value: 0.07069994549210554, P-value: 0.7963111988482552
+Levene's Test for Equal Variances p-value: 0.21294586847041203
+Normality test p-values by density:
+High: 0.632969081401825
+Low: 0.9147356152534485

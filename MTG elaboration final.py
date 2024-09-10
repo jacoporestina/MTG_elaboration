@@ -5,8 +5,15 @@ import glob
 
 # MTG DIVISION IN SUB FILES PART
 
+# Create directories if they do not exist
+os.makedirs("internode_data", exist_ok=True)
+os.makedirs("leaf_data", exist_ok=True)
+os.makedirs("mean_stdev_leaf_internode_data", exist_ok=True)
+os.makedirs("representative_MTG/", exist_ok=True)
+os.makedirs("sorted_representative_MTG", exist_ok=True)
+
 # Specify the CSV file and variables to analyze
-csv_file = "C:/Users/jacop/OneDrive - Wageningen University & Research/General/3D scans/MTG data analysis/MTG.csv"
+csv_file = "MTG.csv"
 
 # Read the data from the CSV file
 data = pd.read_csv(csv_file)
@@ -26,7 +33,7 @@ for date in data['date'].unique():
             if pd.notna(order):  # Check for NaN before processing
                 internode_data = density_data.loc[density_data['order1'] == order]
                 print(internode_data)
-                internode_file_path = f"C:/Users/jacop/OneDrive - Wageningen University & Research/General/3D scans/MTG data analysis/internode_data/internode_data{order}_{date}_{density}.csv"
+                internode_file_path = f"internode_data/internode_data{order}_{date}_{density}.csv"
                 internode_data.to_csv(internode_file_path, index=False)
 
         # Iterate through each element of Order 2
@@ -34,7 +41,7 @@ for date in data['date'].unique():
             if pd.notna(order):  # Check for NaN before processing
                 leaf_data = density_data.loc[density_data['order2'] == order]
                 print(leaf_data)
-                leaf_file_path = f"C:/Users/jacop/OneDrive - Wageningen University & Research/General/3D scans/MTG data analysis/leaf_data/leaf_data{order}_{date}_{density}.csv"
+                leaf_file_path = f"leaf_data/leaf_data{order}_{date}_{density}.csv"
                 leaf_data.to_csv(leaf_file_path, index=False)
 
 # MEAN AND STD CALCULATION PART
@@ -91,9 +98,9 @@ def process_data(input_folder, output_folder, columns_to_calculate, all_columns,
 
 
 # Specify folders and columns for internode and leaf data
-internode_data_folder = "C:/Users/jacop/OneDrive - Wageningen University & Research/General/3D scans/MTG data analysis/internode_data/"
-leaf_data_folder = "C:/Users/jacop/OneDrive - Wageningen University & Research/General/3D scans/MTG data analysis/leaf_data/"
-output_folder = "C:/Users/jacop/OneDrive - Wageningen University & Research/General/3D scans/MTG data analysis/mean_stdev_leaf_internode_data/"
+internode_data_folder = "internode_data/"
+leaf_data_folder = "leaf_data/"
+output_folder = "mean_stdev_leaf_internode_data/"
 
 all_columns = ['internode_length_(mm)', 'phyllotaxis_relative_(°)', 'inclination_absolute_(°)', 
                             'radius_(mm)', 
@@ -162,14 +169,14 @@ def combine_and_adjust_csv_files(input_directory, output_directory, columns_to_c
         combined_df = combined_df[final_column_order]
 
         # Save the combined and reordered DataFrame
-        output_file_name = f"Representative_MTG_{key[0]}_{key[1]}.csv"
+        output_file_name = f"representative_MTG_{key[0]}_{key[1]}.csv"
         output_file_path = os.path.join(output_directory, output_file_name)
         combined_df.to_csv(output_file_path, index=False)
         print(f"Combined file {output_file_name} has been saved.")
 
 # Files directory
-input_folder = "C:/Users/jacop/OneDrive - Wageningen University & Research/General/3D scans/MTG data analysis/mean_stdev_leaf_internode_data/"
-output_folder = "C:/Users/jacop/OneDrive - Wageningen University & Research/General/3D scans/MTG data analysis/Representative_MTG/"
+input_folder = "mean_stdev_leaf_internode_data/"
+output_folder = "representative_MTG/"
 
 # Specify columns to combine
 columns_to_combine = {
@@ -232,10 +239,10 @@ combine_and_adjust_csv_files(input_folder, output_folder, columns_to_combine, de
 # SORTING DATA PART
 
 # Folder path containing your CSV files
-input_folder_path = "C:/Users/jacop/OneDrive - Wageningen University & Research/General/3D scans/MTG data analysis/Representative_MTG/"
+input_folder_path = "representative_MTG/"
 
 # Specify the new folder path
-output_folder_path = "C:/Users/jacop/OneDrive - Wageningen University & Research/General/3D scans/MTG data analysis/Sorted_MTG_Data/"
+output_folder_path = "sorted_representative_MTG/"
 
 # Create the new folder if it doesn't exist
 os.makedirs(output_folder_path, exist_ok=True)

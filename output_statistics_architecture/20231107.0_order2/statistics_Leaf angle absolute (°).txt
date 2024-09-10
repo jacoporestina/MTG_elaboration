@@ -1,0 +1,54 @@
+ANOVA results for xL1 Leaf angle absolute (°):
+F-value: 0.4469404191936284, P-value: 0.518924855637084
+Levene's Test for Equal Variances p-value: 0.3490339047832592
+Normality test p-values by density:
+High: 0.5839244723320007
+Low: 0.5717175602912903
+ANOVA results for xL2 Radius (mm):
+F-value: 0.016099740398649483, P-value: 0.9015466998909134
+Levene's Test for Equal Variances p-value: 0.8058503356221048
+Normality test p-values by density:
+High: 0.16972406208515167
+Low: 0.07542233914136887
+ANOVA results for xL3 Radius (mm):
+F-value: 2.5844569798896972, P-value: 0.1389969248808266
+Levene's Test for Equal Variances p-value: 0.34196290932170315
+Normality test p-values by density:
+High: 0.018718160688877106
+Low: 0.5266196131706238
+ANOVA results for xL4 Radius (mm):
+F-value: 0.9581430472149299, P-value: 0.3507416426095031
+Levene's Test for Equal Variances p-value: 0.3555508012990182
+Normality test p-values by density:
+High: 0.127984881401062
+Low: 0.5788793563842773
+ANOVA results for xL5 Radius (mm):
+F-value: 2.2521486502844694, P-value: 0.1643249018067821
+Levene's Test for Equal Variances p-value: 0.2648978002117103
+Normality test p-values by density:
+High: 0.13014306128025055
+Low: 0.3598408102989197
+ANOVA results for xL6 Radius (mm):
+F-value: 2.282659959125923, P-value: 0.16176256036923128
+Levene's Test for Equal Variances p-value: 0.6769922584652344
+Normality test p-values by density:
+High: 0.8844357132911682
+Low: 0.1469385325908661
+ANOVA results for xL7 Radius (mm):
+F-value: 0.8727010457987748, P-value: 0.37221693623231444
+Levene's Test for Equal Variances p-value: 0.3193461320893769
+Normality test p-values by density:
+High: 0.43119779229164124
+Low: 0.6598693132400513
+ANOVA results for xL8 Radius (mm):
+F-value: 0.056322356987190576, P-value: 0.8171973339013724
+Levene's Test for Equal Variances p-value: 0.4711724482573175
+Normality test p-values by density:
+High: 0.3733232021331787
+Low: 0.3955806791782379
+ANOVA results for xL9 Radius (mm):
+F-value: 0.08273045845521171, P-value: 0.7801438966941061
+Levene's Test for Equal Variances p-value: 0.3428216852184226
+Normality test p-values by density:
+High: 0.7700609564781189
+Low: 0.8234840035438538
