@@ -269,6 +269,21 @@ for filename in os.listdir(input_folder_path):
         # Reset index after sorting
         df = df.reset_index(drop=True)
 
+        # Calculate mean_anticlockwise_rotation only for 'order2' values with xL1, xL2, etc.
+        df['mean_anticlockwise_rotation_(°)'] = 0.0  # Initialize the new column
+        cumulative_rotation = 0  # Starting point
+
+        for i, row in df.iterrows():
+            order2_value = str(row['order2'])  # Get the value in 'order2'
+            if 'xL' in order2_value:  # Only process rows with xL1, xL2, etc.
+                if order2_value == 'xL1':
+                    df.at[i, 'mean_anticlockwise_rotation_(°)'] = 0  # Set xL1 to 0
+                    cumulative_rotation = 0  # Reset for new sequence
+                else:
+                    # Add the previous leaf's phyllotaxis relative to the cumulative sum
+                    cumulative_rotation += df.at[i, 'mean_phyllotaxis_relative_(°)']
+                    df.at[i, 'mean_anticlockwise_rotation_(°)'] = cumulative_rotation
+
         # Save the sorted DataFrame to a new CSV file in the new folder
         output_file_path = os.path.join(output_folder_path, f"sorted_{filename}")
         df.to_csv(output_file_path, index=False)
