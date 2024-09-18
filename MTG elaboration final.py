@@ -8,12 +8,12 @@ import glob
 # Create directories if they do not exist
 os.makedirs("internode_data", exist_ok=True)
 os.makedirs("leaf_data", exist_ok=True)
-os.makedirs("mean_stdev_leaf_internode_data", exist_ok=True)
+os.makedirs("mean_sd_leaf_internode_data", exist_ok=True)
 os.makedirs("representative_MTG/", exist_ok=True)
 os.makedirs("sorted_representative_MTG", exist_ok=True)
 
 # Specify the CSV file and variables to analyze
-csv_file = "MTG.csv"
+csv_file = "MTG_csv.csv"
 
 # Read the data from the CSV file
 data = pd.read_csv(csv_file)
@@ -55,72 +55,55 @@ def process_data(input_folder, output_folder, columns_to_calculate, all_columns,
     for csv_file in glob.glob(os.path.join(input_folder, "*.csv")):
         data = pd.read_csv(csv_file).convert_dtypes()
         
+        # Create copies of the columns_to_calculate and all_columns lists
+        columns_to_calculate_copy = columns_to_calculate.copy()
+        all_columns_copy = all_columns.copy()
+
         # Convert specified columns from mm to meters and rename
         for col in columns_to_convert:
             if col in data.columns:
                 data[col] = data[col] / 1000  # Convert from mm to meters
-                new_col_name = f"{col[:-4]}(m)"  # Assumes the column name ends with '_(mm)'
+                new_col_name = f"{col[:-4]}(m)"  # Change '_(mm)' to '_(m)'
                 data.rename(columns={col: new_col_name}, inplace=True)
-                columns_to_calculate = [new_col_name if x == col else x for x in columns_to_calculate]
-                all_columns = [new_col_name if x == col else x for x in all_columns]
+                columns_to_calculate_copy = [new_col_name if x == col else x for x in columns_to_calculate_copy]
+                all_columns_copy = [new_col_name if x == col else x for x in all_columns_copy]
 
-        if len(data) == 1:
-            # Process files with only one value
-            result_data = data[keep_columns].copy()
-
-            for col in all_columns:
-                if col in columns_to_calculate:
-                    result_data[f'mean_{col}'] = data[col].iloc[0]
-
-            result_data.to_csv(os.path.join(output_folder, f"{os.path.basename(csv_file)}"), index=False)
-            print(f"{os.path.basename(csv_file)} - Only one value. Transforming columns.")
-            continue
-
-        filtered_data = data[keep_columns + columns_to_calculate].copy()
-
+        # Now that we have renamed the columns, ensure to work with the updated lists
         try:
-            mean_values, std_values = calculate_stats(filtered_data, columns_to_calculate)
+            filtered_data = data[keep_columns + columns_to_calculate_copy].copy()
 
-            for col, mean_val, std_val in zip(columns_to_calculate, mean_values, std_values):
+            mean_values, std_values = calculate_stats(filtered_data, columns_to_calculate_copy)
+
+            for col, mean_val, std_val in zip(columns_to_calculate_copy, mean_values, std_values):
                 filtered_data.loc[:, f'mean_{col}'] = [mean_val] * len(filtered_data)
-                filtered_data.loc[:, f'std_{col}'] = [std_val] * len(filtered_data)
+                filtered_data.loc[:, f'sd_{col}'] = [std_val] * len(filtered_data)
 
-            # Select keep columns, mean, and std columns
+            # Select keep columns, mean, and sd columns
             result_data = filtered_data[keep_columns +
-                                        [f'mean_{col}' for col in columns_to_calculate] +
-                                        [f'std_{col}' for col in columns_to_calculate]].iloc[:1].copy()
+                                        [f'mean_{col}' for col in columns_to_calculate_copy] +
+                                        [f'sd_{col}' for col in columns_to_calculate_copy]].iloc[:1].copy()
 
-            result_data.to_csv(os.path.join(output_folder, f"mean_stdev_{os.path.basename(csv_file)}"), index=False)
+            result_data.to_csv(os.path.join(output_folder, f"mean_sd_{os.path.basename(csv_file)}"), index=False)
             print(os.path.basename(csv_file))
 
-        except (ValueError, ZeroDivisionError) as e:
-            print(f"{os.path.basename(csv_file)} - Error calculating mean and std: {str(e)}")
+        except (ValueError, KeyError, ZeroDivisionError) as e:
+            print(f"{os.path.basename(csv_file)} - Error calculating mean and sd: {str(e)}")
 
 
 # Specify folders and columns for internode and leaf data
 internode_data_folder = "internode_data/"
 leaf_data_folder = "leaf_data/"
-output_folder = "mean_stdev_leaf_internode_data/"
+output_folder = "mean_sd_leaf_internode_data/"
 
-all_columns = ['internode_length_(mm)', 'phyllotaxis_relative_(°)', 'inclination_absolute_(°)', 
-                            'radius_(mm)', 
-                            'length_segments_1st_leaf_(mm)', 'length_segments_2nd_leaf_(mm)', 
-                            'length_segments_3rd_leaf_(mm)', 'length_petiolule_(mm)', 
-                            'inclination_segments_1st_leaf_(°)', 'inclination_segments_2nd_leaf_(°)',
-                            'inclination_segments_3rd_leaf_(°)', 'inclination_petiolule_(°)']
+all_columns = ['length_(mm)', 'phyllotaxis_relative_(°)', 'inclination_(°)', 
+                             'width_(mm)', 'total_length_segments_(mm)', 'length_petiolule_(mm)', 
+                             'inclination_petiolule_(°)', 'total_leaf_area_(m2)']
 
-keep_columns = ["date", "density", "order1", "order2", "order", "rank", "frequency_%", 
-                'mean_phyllotaxis_leaf_segments_(°)', 'std_phyllotaxis_leaf_segments_(°)',
-                'mean_inclination_petiolules_(°)', 'std_inclination_petiolules_(°)', 
-                'mean_length_petiolules_(m)', 'std_length_petiolules_(m)',	
-                'mean_L/W_leaflets', 'std_L/W_leaflets', 'mean_leaflet_area_(m2)', 'std_leaflet_area_(m2)', 
-                "mean_lower_side_transmittance", "mean_lower_side_reflectance", "mean_upper_side_transmittance", 
-                "mean_upper_side_reflectance", 'mean_biomass', 'std_biomass', 'degree_days', 'eff', 'Amax', 'kNkl'] 
+keep_columns = ["date", "density", "order1", "order2", "order", "rank", "probability_%", 
+                "upper_transmittance", "upper_reflectance", "lower_transmittance", "lower_reflectance", 
+                'quantum_efficiency', 'Amax', 'convexity'] 
 
-columns_to_convert = {'internode_length_(mm)', 'radius_(mm)', 'length_segments_1st_leaf_(mm)', 
-                      'length_segments_2nd_leaf_(mm)', 'length_segments_3rd_leaf_(mm)', 
-                       'length_petiolule_(mm)'}  # Define the columns to be converted from mm to m
-
+columns_to_convert = {'length_(mm)', 'width_(mm)', 'length_petiolule_(mm)', 'total_length_segments_(mm)'}  # Define the columns to be converted from mm to m
 
 columns_to_calculate = all_columns  # This assumes you want to calculate stats for all these columns
 
@@ -130,12 +113,12 @@ process_data(internode_data_folder, output_folder, all_columns, columns_to_calcu
 # Process leaf data
 process_data(leaf_data_folder, output_folder, all_columns, columns_to_calculate, keep_columns, columns_to_convert)
 
-print("mean and std calculation completed")
+print("mean and sd calculation completed")
 
 
 # REPRESENTATIVE MTG GENERATION PART
 
-def combine_and_adjust_csv_files(input_directory, output_directory, columns_to_combine, desired_column_order):
+def combine_and_adjust_csv_files(input_directory, output_directory, desired_column_order):
     all_files = os.listdir(input_directory)
     files_dict = {}
 
@@ -143,13 +126,6 @@ def combine_and_adjust_csv_files(input_directory, output_directory, columns_to_c
         if file_name.endswith('.csv'):
             file_path = os.path.join(input_directory, file_name)
             df = pd.read_csv(file_path)
-
-            # Combine specified columns
-            for new_col, cols_to_combine in columns_to_combine.items():
-                if all(col in df.columns for col in cols_to_combine):
-                    df[new_col] = df[cols_to_combine].fillna('').astype(str).apply(lambda x: '; '.join(filter(None, x)), axis=1)
-                    df.drop(cols_to_combine, axis=1, inplace=True)
-
             key = (df['date'].iloc[0], df['density'].iloc[0])
             files_dict.setdefault(key, []).append(df)
 
@@ -175,65 +151,28 @@ def combine_and_adjust_csv_files(input_directory, output_directory, columns_to_c
         print(f"Combined file {output_file_name} has been saved.")
 
 # Files directory
-input_folder = "mean_stdev_leaf_internode_data/"
+input_folder = "mean_sd_leaf_internode_data/"
 output_folder = "representative_MTG/"
-
-# Specify columns to combine
-columns_to_combine = {
-    
-    'mean_length_leaf_segments_(m)': [
-    'mean_length_segments_1st_leaf_(m)',  
-    'mean_length_segments_2nd_leaf_(m)', 
-    'mean_length_segments_3rd_leaf_(m)', 
-    'mean_length_petiolule_(m)',
-    ],
-    
-    'std_length_leaf_segments_(m)': [
-    'std_length_segments_1st_leaf_(m)', 
-    'std_length_segments_2nd_leaf_(m)', 
-    'std_length_segments_3rd_leaf_(m)',
-    'std_length_petiolule_(m)', 
-    ],
-    
-    'mean_inclination_leaf_segments_(°)': [
-    'mean_inclination_segments_1st_leaf_(°)',  
-    'mean_inclination_segments_2nd_leaf_(°)', 
-    'mean_inclination_segments_3rd_leaf_(°)',
-    'mean_inclination_petiolule_(°)',
-    ],
-    
-    'std_inclination_leaf_segments_(°)': [
-    'std_inclination_segments_1st_leaf_(°)', 
-    'std_inclination_segments_2nd_leaf_(°)', 
-    'std_inclination_segments_3rd_leaf_(°)', 
-    'std_inclination_petiolule_(°)', 
-    ]
-}
 
 # Define your desired column order
 desired_column_order = [
-    "date", "density", "order1", "order2", "order", "rank", "frequency_%", 
-    'mean_phyllotaxis_relative_(°)', 'std_phyllotaxis_relative_(°)', 
-    'mean_inclination_absolute_(°)', 'std_inclination_absolute_(°)',
-    'mean_biomass', 'std_biomass', 
-    'mean_internode_length_(m)', 'std_internode_length_(m)',  # Corrected
-    'mean_radius_(m)', 'std_radius_(m)',  # Corrected
-    'degree_days',
-    'mean_phyllotaxis_leaf_segments_(°)', 'std_phyllotaxis_leaf_segments_(°)', 
-    'mean_inclination_leaf_segments_(°)', 'std_inclination_leaf_segments_(°)',  # Corrected
-    'mean_inclination_petiolules_(°)', 'std_inclination_petiolules_(°)',  # Corrected
-    'mean_length_leaf_segments_(m)', 'std_length_leaf_segments_(m)', 
-    'mean_length_petiolules_(m)', 'std_length_petiolules_(m)', 
-    'mean_L/W_leaflets', 'std_L/W_leaflets', 
-    'mean_leaflet_area_(m2)', 'std_leaflet_area_(m2)', 
-    'eff', 'Amax', 'kNkl',
-    "mean_upper_side_reflectance", "mean_upper_side_transmittance",  
-    "mean_lower_side_reflectance", "mean_lower_side_transmittance"
+    "date", "density", "order1", "order2", "order", "rank", "probability_%", 
+    'mean_phyllotaxis_relative_(°)', 'sd_phyllotaxis_relative_(°)', 
+    'mean_inclination_(°)', 'sd_inclination_(°)',
+    'mean_length_(m)', 'sd_length_(m)', 
+    'mean_width_(m)', 'sd_width_(m)', 
+    'mean_total_leaf_area_(m2)', 'sd_total_leaf_area_(m2)',
+    'mean_length_petiolule_(m)', 'sd_length_petiolule_(m)',
+    'mean_total_length_segments_(m)', 'sd_total_length_segments_(m)',
+    'mean_inclination_petiolule_(°)', 'sd_inclination_petiolule_(°)',
+    'quantum_efficiency', 'Amax', 'convexity',
+    'upper_reflectance', 'upper_transmittance',  
+    'lower_reflectance', 'lower_transmittance', 
+    
 ]
                         
-
 # Call the function
-combine_and_adjust_csv_files(input_folder, output_folder, columns_to_combine, desired_column_order)
+combine_and_adjust_csv_files(input_folder, output_folder, desired_column_order)
 
 
 # SORTING DATA PART
