@@ -222,6 +222,12 @@ for filename in os.listdir(input_folder_path):
                     # Add the previous leaf's phyllotaxis relative to the cumulative sum
                     cumulative_rotation += df.at[i, 'mean_phyllotaxis_relative_(°)']
                     df.at[i, 'mean_anticlockwise_rotation_(°)'] = cumulative_rotation
+        
+        # Replace mean_phyllotaxis_relative with mean_anticlockwise_rotation
+        df['mean_phyllotaxis_relative_(°)'] = df['mean_anticlockwise_rotation_(°)']
+
+        # Drop the 'mean_anticlockwise_rotation_(°)' column as it's no longer needed
+        df = df.drop(columns=['mean_anticlockwise_rotation_(°)'])
 
         # Save the sorted DataFrame to a new CSV file in the new folder
         output_file_path = os.path.join(output_folder_path, f"sorted_{filename}")
