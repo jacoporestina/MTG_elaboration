@@ -86,10 +86,3 @@ All processed data and generated statistics are saved in respective directories:
 - **`filtered_LOP_data/`**: Grouped and processed LOP files.
 - **`combined_LOP_data.csv`**: Consolidated dataset summarizing all LOP data.
 
-## License
-
-This repository is distributed under the [MIT License](LICENSE).
-
-## Author
-
-[Jacopo Restina] - Contributions to data analysis and statistical modeling for plant science.
