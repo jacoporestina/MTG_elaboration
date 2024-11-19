@@ -8,7 +8,7 @@ This repository contains Python scripts designed to process and analyze data rel
 
 ### 1. `MTG elaboration final.py`
 
-This script processes and organizes MTG data through several steps:
+This script processes and organizes MTG (Multiscale Tree Graph) data through several steps:
 - **Division into Subfiles**: Splits data into internode and leaf-specific CSV files based on unique dates and densities.
 - **Statistical Calculations**: Computes mean and standard deviation for specific columns.
 - **Representative MTG Generation**: Combines and reorders data for analysis while maintaining specified column orders.
