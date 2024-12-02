@@ -1,0 +1,54 @@
+ANOVA results for xL1 inclination_(°):
+F-value: 0.4469788788632338, P-value: 0.518907256254429
+Levene's Test for Equal Variances p-value: 0.3488843189929971
+Normality test p-values by density:
+High: 0.5853499174118042
+Low: 0.5718730092048645
+ANOVA results for xL2 total_length_segments_(mm):
+F-value: 3.86601994092716, P-value: 0.07763041110064603
+Levene's Test for Equal Variances p-value: 0.4497321678309312
+Normality test p-values by density:
+High: 0.9481421113014221
+Low: 0.45831966400146484
+ANOVA results for xL3 total_length_segments_(mm):
+F-value: 3.868984191874776, P-value: 0.07753329750896183
+Levene's Test for Equal Variances p-value: 0.7903169379531249
+Normality test p-values by density:
+High: 0.6638579964637756
+Low: 0.8726698756217957
+ANOVA results for xL4 total_length_segments_(mm):
+F-value: 0.7180513924178759, P-value: 0.4166034472708477
+Levene's Test for Equal Variances p-value: 0.0906293354386294
+Normality test p-values by density:
+High: 0.17039604485034943
+Low: 0.6401126980781555
+ANOVA results for xL5 total_length_segments_(mm):
+F-value: 1.1013490604629816, P-value: 0.31867094595592693
+Levene's Test for Equal Variances p-value: 0.5119052038914644
+Normality test p-values by density:
+High: 0.18558108806610107
+Low: 0.3706303834915161
+ANOVA results for xL6 total_length_segments_(mm):
+F-value: 1.9659448205291437, P-value: 0.191149271476725
+Levene's Test for Equal Variances p-value: 0.4793184612574638
+Normality test p-values by density:
+High: 0.5377827286720276
+Low: 0.03153902664780617
+ANOVA results for xL7 total_length_segments_(mm):
+F-value: 1.7954361172591362, P-value: 0.2099166533014694
+Levene's Test for Equal Variances p-value: 0.8372374279292898
+Normality test p-values by density:
+High: 0.1522136926651001
+Low: 0.5728102922439575
+ANOVA results for xL8 total_length_segments_(mm):
+F-value: 1.1502923218599168, P-value: 0.30868797562872036
+Levene's Test for Equal Variances p-value: 0.7147003947911017
+Normality test p-values by density:
+High: 0.21919645369052887
+Low: 0.12214155495166779
+ANOVA results for xL9 total_length_segments_(mm):
+F-value: 0.15715203560504018, P-value: 0.7010271967771055
+Levene's Test for Equal Variances p-value: 0.555364028125068
+Normality test p-values by density:
+High: 0.3979128301143646
+Low: 0.3576923608779907

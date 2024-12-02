@@ -1,0 +1,6 @@
+ANOVA results for I0 length_(mm):
+F-value: 3.3044041763109546, P-value: 0.10661020304817179
+Levene's Test for Equal Variances p-value: 0.19974075550362674
+Normality test p-values by density:
+High: 0.7342364192008972
+Low: 0.016566265374422073

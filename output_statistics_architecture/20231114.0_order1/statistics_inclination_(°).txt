@@ -1,0 +1,6 @@
+ANOVA results for I0 inclination_(°):
+F-value: 0.14655879318439757, P-value: 0.711817105606924
+Levene's Test for Equal Variances p-value: 0.990805526541807
+Normality test p-values by density:
+High: 0.5524268746376038
+Low: 0.2395816147327423

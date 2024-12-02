@@ -1,0 +1,6 @@
+ANOVA results for I0 phyllotaxis_relative_(°):
+F-value: nan, P-value: nan
+Levene's Test for Equal Variances p-value: nan
+Normality test p-values by density:
+High: 1.0
+Low: 1.0

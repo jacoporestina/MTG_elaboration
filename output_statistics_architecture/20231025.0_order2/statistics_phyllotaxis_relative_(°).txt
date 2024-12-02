@@ -1,0 +1,24 @@
+ANOVA results for xL1 phyllotaxis_relative_(°):
+F-value: nan, P-value: nan
+Levene's Test for Equal Variances p-value: nan
+Normality test p-values by density:
+Low: 1.0
+High: 1.0
+ANOVA results for xL2 total_length_segments_(mm):
+F-value: 0.035827319803240776, P-value: 0.8536591164204798
+Levene's Test for Equal Variances p-value: 0.7322902859447209
+Normality test p-values by density:
+Low: 0.7254618406295776
+High: 0.91502445936203
+ANOVA results for xL3 total_length_segments_(mm):
+F-value: 0.019619325203625797, P-value: 0.8913865336236609
+Levene's Test for Equal Variances p-value: 0.08472689272916135
+Normality test p-values by density:
+Low: 0.13791893422603607
+High: 0.8929786682128906
+ANOVA results for xL4 total_length_segments_(mm):
+F-value: 0.03268537601738603, P-value: 0.8601431774815896
+Levene's Test for Equal Variances p-value: 0.8053700171087563
+Normality test p-values by density:
+Low: 0.9161219596862793
+High: 0.40879011154174805
